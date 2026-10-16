@@ -30,7 +30,6 @@
             just
 
             # DB
-            sqlite
             goose
             turso-cli
           ];

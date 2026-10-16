@@ -24,20 +24,9 @@ func main() {
 	godotenv.Load()
 
 	// -- DB --
-	driver := os.Getenv("DB_DRIVER")
-	if driver == "" {
-		driver = "sqlite"
-	}
-	path := os.Getenv("SQLITE_PATH")
-	if path == "" {
-		path = "meowcounter.db"
-	}
-
 	d, err := db.Open(db.Config{
-		Driver: driver,
-		Path:   path,
-		URL:    os.Getenv("TURSO_DATABASE_URL"),
-		Token:  os.Getenv("TURSO_AUTH_TOKEN"),
+		URL:   os.Getenv("LIBSQL_URL"),
+		Token: os.Getenv("LIBSQL_AUTH_TOKEN"),
 	})
 	if err != nil {
 		log.Fatal(err)

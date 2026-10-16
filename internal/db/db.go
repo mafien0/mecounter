@@ -1,10 +1,9 @@
-// Package db provides a counter store backed by sqlite (local) or Turso (libSQL).
+// Package db provides a counter store backed by libSQL.
 package db
 
 import (
 	"context"
 	"errors"
-	"fmt"
 )
 
 var ErrNotFound = errors.New("not found")
@@ -14,30 +13,20 @@ type Counter struct {
 	Count int64
 }
 
-// DB is the counter store each backend implements.
+// DB is the counter store the libSQL backend implements.
 type DB interface {
 	GetCounter(ctx context.Context, name string) (Counter, error)
 	UpsertCounter(ctx context.Context, name string, count int64) error
 	Close() error
 }
 
-// Config selects a backend.
-// Driver "sqlite" uses Path; driver "turso" uses URL and Token.
+// Config describes the libSQL database to connect to.
 type Config struct {
-	Driver string
-	Path   string
-	URL    string
-	Token  string
+	URL   string
+	Token string
 }
 
-// Open connects to the backend selected by cfg.Driver.
+// Open connects to the libSQL database selected by cfg.
 func Open(cfg Config) (DB, error) {
-	switch cfg.Driver {
-	case "sqlite":
-		return openSQLite(cfg.Path)
-	case "turso":
-		return openTurso(cfg.URL, cfg.Token)
-	default:
-		return nil, fmt.Errorf("unsupported DB_DRIVER %q (want sqlite or turso)", cfg.Driver)
-	}
+	return openLibSQL(cfg.URL, cfg.Token)
 }
