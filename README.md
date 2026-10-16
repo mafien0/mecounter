@@ -14,7 +14,9 @@ add to your website
 replace `<YOUR_NAME_HERE>` with any name you want(only some special symbols are allowed)
 
 # Self hosting
-!TODO
+There is docker image and docker-compose provided in this repo
+I will not teach you how to use docker, ask a clanker for that
 
+You can also use vercel like i do, but i wont teach you how to use it too
 # Credit
 [github:journey-ad/Moe-Counter](https://github.com/journey-ad/Moe-Counter) - Inspiration + Art
