@@ -14,7 +14,7 @@ add to your website
 replace `<YOUR_NAME_HERE>` with any name you want(only some special symbols are allowed)
 
 # Self hosting
-There is docker image and docker-compose provided in this repo
+There is docker image and docker-compose provided in this repo  
 I will not teach you how to use docker, ask a clanker for that
 
 You can also use vercel like i do, but i wont teach you how to use it too
