@@ -1,0 +1,16 @@
+services:
+  api:
+    build:
+      context: .
+    image: meowcounter:latest
+    restart: unless-stopped
+    ports:
+      - "${HOST_PORT:-3000}:3000"
+    # Optional local overrides; container vars below win over env_file.
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      PORT: 3000
+      LIBSQL_URL: ${LIBSQL_URL:?set LIBSQL_URL}
+      LIBSQL_AUTH_TOKEN: ${LIBSQL_AUTH_TOKEN:?set LIBSQL_AUTH_TOKEN}

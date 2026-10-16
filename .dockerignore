@@ -1,0 +1,15 @@
+.git
+.gitignore
+.direnv
+.env
+.envrc
+tmp
+out
+*.db
+Dockerfile
+docker-compose.yml
+README.md
+flake.nix
+flake.lock
+justfile
+.air.toml
