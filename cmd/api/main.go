@@ -41,6 +41,10 @@ func main() {
 	}
 	mux := http.NewServeMux()
 
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "https://github.com/mafien0/meowcounter", http.StatusFound)
+	})
+
 	mux.HandleFunc("GET /@/{name}", func(w http.ResponseWriter, r *http.Request) {
 		var err error
 
